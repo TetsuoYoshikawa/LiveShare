@@ -25,10 +25,13 @@
            alt @click="$router.push({
           path:'/comment/'+ shareData.id,
           params:{id:shareData.id}})" />
-           <div>
+          <div>
             <p class="button"  v-if="shareData.want_id === 3">
-              <img class="icon" src="../assets/feather.png"/>行きたい</p>
-           </div>
+              <img @click="want" v-if="shareData.want.length == null" class="icon" src="../assets/feather.png"/>行きたい
+              <img @click="want" 
+              v-else class="icon" src="../assets/feather.png" />行きたい済
+            </p>
+          </div>
         </div>
       </div>
     </div>
@@ -98,6 +101,44 @@ export default {
           });
         });
     },
+    want(){
+      if(shareData.want.length === null){
+        axios
+        .post('http://127.0.0.1:8000/api/want',{
+          user_id:this.$store.state.user_id,
+          share_id:this.shareData.id
+        })
+        .then((response) => {
+          console.log(response);
+          this.$router.go({
+              path: this.$router.currentRoute.path,
+              force: true,
+          })
+        })
+        .catch((error) => {
+          console.log(error);
+          alert('行きたいができませんでした');
+        })
+      }else{
+        axios
+        .delete('http://127.0.0.1:8000/api/want',{
+          data:{
+            user_id:this.$store.state.user_id,
+            share_id:this.shareData.id
+          }
+        })
+        .then((response) => {
+          console.log(response);
+          this.$router.go({
+              path: this.$router.currentRoute.path,
+              force: true,
+          })
+        })
+        .catch((error) => {
+          console.log(error)
+        })
+      }
+    }
   },
 };
 </script>
