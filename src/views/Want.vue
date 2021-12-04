@@ -12,12 +12,12 @@
           </div>
           <div class="message" v-for="shareData in shareData" :key="shareData.id">
             <div class="flex">
-              <img v-if="shareData.user.image_url === null" src="../assets/profile.png" class="icon-profile">
-              <img v-else :src="'https://tetsuoyoshikawa.s3.ap-northeast-3.amazonaws.com/' + shareData.user.image_url" class="icon-profile">
+              <img v-if="shareData.share.user.image_url === null" src="../assets/profile.png" class="icon-profile">
+              <img v-else :src="'https://tetsuoyoshikawa.s3.ap-northeast-3.amazonaws.com/' + shareData.share.user.image_url" class="icon-profile">
               <h3 class="profile-name" @click="$router.push({
               path:'/userProfile/'+ shareData.user_id,
               params:{id:shareData.user_id}})">
-              {{shareData.user.name}}
+              {{shareData.share.user.name}}
               </h3>
             </div>
             <div class="flex share">
