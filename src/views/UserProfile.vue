@@ -43,37 +43,24 @@ export default {
       id:this.$store.state.user_id,
     } 
   },
-  computed:{
-     postUser(){
-      return this.$store.getters["individual/user"];
-    },
-    //自分のユーザー情報
-    authUser(){
-      return this.$store.getters["auth/user"];
-    },
-    //フォロー有無の確認
-    followStatus(){
-      return this.$store.getters["follow/status"];
-    },
-  },
   methods:{
     getProfiles(){
       axios
-       .get('http://127.0.0.1:8000/api/profile/'+ this.user_id)
+       .get('https://nameless-everglades-38438.herokuapp.com/api/profile/'+ this.user_id)
        .then((response) => {
          this.profiles = response.data.data;
        })
     },
     async getShare(){
       await axios
-        .get('http://127.0.0.1:8000/api/share/user/' + this.user_id)
+        .get('https://nameless-everglades-38438.herokuapp.com/api/share/user/' + this.user_id)
         .then((response) => {
           this.shareData = response.data.data;
         })
     },
     async pushFollow(profile){
       await axios 
-        .post('http://127.0.0.1:8000/api/follow',{
+        .post('https://nameless-everglades-38438.herokuapp.com/api/follow',{
           follower_id:this.id,
           following_id:profile.id,
         })
@@ -84,7 +71,7 @@ export default {
     },
     async deleteFollow(profile){
       await axios 
-        .delete('http://127.0.0.1:8000/api/follow',{
+        .delete('https://nameless-everglades-38438.herokuapp.com/api/follow',{
           data:{
             follower_id:this.id,
             following_id:profile.id,

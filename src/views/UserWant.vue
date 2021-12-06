@@ -42,7 +42,8 @@
           </div>
           <div class="message" v-for="shareData in shareData" :key="shareData.id" >
             <div class="flex">
-              <img src="../assets/logo.png" class="icon-profile">
+              <img v-if="shareData.user.image_url === null" src="../assets/profile.png" class="icon-profile">
+              <img v-else :src="'https://tetsuoyoshikawa.s3.ap-northeast-3.amazonaws.com/' + shareData.user.image_url" class="icon-profile">
               <h3 class="profile-name" @click="$router.push({
               path:'/userProfile/'+ shareData.user_id,
               params:{id:shareData.user_id}})">
@@ -73,21 +74,21 @@ export default {
   methods: {
     async getUser() {
       await axios
-        .get("http://127.0.0.1:8000/api/wants/" + this.$route.params.id)
+        .get("https://nameless-everglades-38438.herokuapp.com/api/wants/" + this.$route.params.id)
         .then((response) => {
           this.shareData = response.data.data;
         });
     },
     async getShare() {
       await axios
-        .get("http://127.0.0.1:8000/api/share/" + this.$route.params.id)
+        .get("https://nameless-everglades-38438.herokuapp.com/api/share/" + this.$route.params.id)
         .then((response) => {
           this.shares = response.data;
         });
     },
     deleteWant(shareData){
       axios
-        .delete('http://127.0.0.1:8000/api/want',{
+        .delete('https://nameless-everglades-38438.herokuapp.com/api/want',{
           data:{
             user_id:this.$store.state.user_id,
             share_id:shareData.share_id,

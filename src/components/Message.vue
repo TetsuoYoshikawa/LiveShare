@@ -62,7 +62,7 @@ export default {
         this.shares[index].favorite.forEach((element) => {
           if(element.user_id == this.$store.state.user_id){
             axios
-              .delete("http://127.0.0.1:8000/api/favorite", {
+              .delete("https://nameless-everglades-38438.herokuapp.com/api/favorite", {
                 data:{
                   share_id:this.shares[index].share.id,
                   user_id:this.$store.state.user_id,
@@ -79,7 +79,7 @@ export default {
         });
       }else{
         axios
-          .post('http://127.0.0.1:8000/api/favorite',{
+          .post('https://nameless-everglades-38438.herokuapp.com/api/favorite',{
             share_id:this.shares[index].share.id,
             user_id:this.$store.state.user_id
           })
@@ -94,7 +94,7 @@ export default {
     },
     deleteShare(shareData) {
       axios
-      .delete("http://127.0.0.1:8000/api/share/" + shareData.share.id)
+      .delete("https://nameless-everglades-38438.herokuapp.com/api/share/" + shareData.share.id)
       .then((response) => {
           console.log(response);
           this.$router.go({
@@ -107,7 +107,7 @@ export default {
       this.shares[index].want.forEach((element) => {
       if(element.user_id == this.$store.state.user_id){
         axios
-        .delete('http://127.0.0.1:8000/api/want',{
+        .delete('https://nameless-everglades-38438.herokuapp.com/api/want',{
           data:{
             user_id:this.$store.state.user_id,
             share_id:this.shares[index].share.id,
@@ -125,7 +125,7 @@ export default {
     },
     want(index){
       axios
-        .post('http://127.0.0.1:8000/api/want',{
+        .post('https://nameless-everglades-38438.herokuapp.com/api/want',{
           user_id:this.$store.state.user_id,
           share_id:this.shares[index].share.id,
         })
@@ -143,10 +143,10 @@ export default {
     async getShares(){
       let data = [];
       const shares = await axios
-        .get('http://127.0.0.1:8000/api/share');
+        .get('https://nameless-everglades-38438.herokuapp.com/api/share');
       for(let i = 0; i < shares.data.data.length; i++){
         await axios
-          .get('http://127.0.0.1:8000/api/share/' + shares.data.data[i].id)
+          .get('https://nameless-everglades-38438.herokuapp.com/api/share/' + shares.data.data[i].id)
           .then((response) => {
             data.push(response.data);
           });

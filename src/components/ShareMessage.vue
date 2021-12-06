@@ -74,7 +74,7 @@ export default {
         data.append("image_url", this.file);
         data.append("tag_id", this.tag_id);
         axios
-          .post("http://127.0.0.1:8000/api/share",data)
+          .post("https://nameless-everglades-38438.herokuapp.com/api/share",data)
           .then((response) => {
             console.log(response);
             alert("シェアしました");
@@ -96,7 +96,7 @@ export default {
         data.append("date", this.date);
         data.append("tag_id", this.tag_id);
         axios
-          .post("http://127.0.0.1:8000/api/shares",data)
+          .post("https://nameless-everglades-38438.herokuapp.com/api/shares",data)
           .then((response) => {
             console.log(response);
             alert("シェアしました");

@@ -68,14 +68,14 @@ export default {
   methods: {
     async getShare(){
       await axios
-        .get('http://127.0.0.1:8000/api/want/' + this.id)
+        .get('https://nameless-everglades-38438.herokuapp.com/api/want/' + this.id)
         .then((response) => {
           this.shareData = response.data.data;
         })
     },
     deleteWant(shareData){
       axios
-        .delete('http://127.0.0.1:8000/api/want',{
+        .delete('https://nameless-everglades-38438.herokuapp.com/api/want',{
           data:{
             user_id:this.$store.state.user_id,
             share_id:shareData.share_id,

@@ -64,7 +64,7 @@ export default {
   methods:{
     async getUser(){
       await axios
-        .get('http://127.0.0.1:8000/api/profile/' + this.id)
+        .get('https://nameless-everglades-38438.herokuapp.com/api/profile/' + this.id)
         .then((response) => {
           this.userData = response.data.data;
         })
@@ -85,7 +85,7 @@ export default {
       formData.append("image_url", this.file);
       formData.append("id", this.id);
       axios
-        .post("http://127.0.0.1:8000/api/profile", formData)
+        .post("https://nameless-everglades-38438.herokuapp.com/api/profile", formData)
         .then(response => {
           console.log(response);
           this.$router.go({
@@ -96,7 +96,7 @@ export default {
     },
     async edit(){
       await axios
-        .put('http://127.0.0.1:8000/api/profile/user/' + this.id,{
+        .put('https://nameless-everglades-38438.herokuapp.com/api/profile/user/' + this.id,{
           content:this.content,
           id:this.id,
         })

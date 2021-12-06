@@ -60,7 +60,7 @@ export default {
   methods: {
     async getShare(){
       await axios
-        .get('http://127.0.0.1:8000/api/favorite/' + this.id)
+        .get('https://nameless-everglades-38438.herokuapp.com/api/favorite/' + this.id)
         .then((response) => {
           this.shareData = response.data.data;
           this.user = response.data.user;
@@ -68,7 +68,7 @@ export default {
     },
     favorite(shareData) {
       axios
-        .delete("http://127.0.0.1:8000/api/favorite", {
+        .delete("https://nameless-everglades-38438.herokuapp.com/api/favorite", {
           data:{
             share_id:shareData.share_id,
             user_id:this.$store.state.user_id,

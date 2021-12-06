@@ -41,17 +41,15 @@ export default {
       name:"",
       email:"",
       password:"",
-      image_url:"https://tetsuoyoshikawa.s3.ap-northeast-3.amazonaws.com/iUldgt6v2AYGCE6u28vukpXP6qMrVvafNLIo2bpG.png"
     };
   },
   methods:{
     register(){
       axios
-        .post('http://127.0.0.1:8000/api/register',{
+        .post('https://nameless-everglades-38438.herokuapp.com/api/register',{
           name:this.name,
           email:this.email,
           password:this.password,
-          image_url:this.image_url
         })
         .then((response) =>{
           console.log(response);

@@ -64,7 +64,7 @@ export default {
     favorite(shareData) {
       if (shareData.user_id === this.$store.state.user_id) {
         axios
-          .post('http://127.0.0.1:8000/api/favorite',{
+          .post('https://nameless-everglades-38438.herokuapp.com/api/favorite',{
             share_id:this.shareData.id,
             user_id:this.$store.state.user_id
           })
@@ -77,7 +77,7 @@ export default {
           })
       } else {
         axios
-          .delete("http://127.0.0.1:8000/api/favorite", {
+          .delete("https://nameless-everglades-38438.herokuapp.com/api/favorite", {
             data:{
               share_id:this.shareData.id,
               user_id:this.$store.state.user_id,
@@ -94,7 +94,7 @@ export default {
     },
     deleteShare(shareData) {
       axios
-      .delete("http://127.0.0.1:8000/api/share/" + shareData.id)
+      .delete("https://nameless-everglades-38438.herokuapp.com/api/share/" + shareData.id)
       .then((response) => {
           console.log(response);
           this.$router.go({
@@ -105,7 +105,7 @@ export default {
     },
     deleteWant(shareData){
       axios
-        .delete('http://127.0.0.1:8000/api/want',{
+        .delete('https://nameless-everglades-38438.herokuapp.com/api/want',{
           data:{
             user_id:this.$store.state.user_id,
             share_id:shareData.id,
@@ -121,7 +121,7 @@ export default {
     },
     want(shareData){
       axios
-        .post('http://127.0.0.1:8000/api/want',{
+        .post('https://nameless-everglades-38438.herokuapp.com/api/want',{
           user_id:this.$store.state.user_id,
           share_id:shareData.id,
         })
@@ -138,7 +138,7 @@ export default {
     },
     async getShares() {
       await axios
-        .get("http://127.0.0.1:8000/api/share/user/" + this.$route.params.id)
+        .get("https://nameless-everglades-38438.herokuapp.com/api/share/user/" + this.$route.params.id)
         .then((response) => {
           this.shareData = response.data;
         });
