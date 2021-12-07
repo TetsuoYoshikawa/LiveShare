@@ -64,7 +64,7 @@ export default {
   methods:{
     async getUser(){
       await axios
-        .get('https://nameless-everglades-38438.herokuapp.com/api/profile/' + this.id)
+        .get('http://nameless-everglades-38438.herokuapp.com/api/profile/' + this.id)
         .then((response) => {
           this.userData = response.data.data;
         })

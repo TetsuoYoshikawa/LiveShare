@@ -79,10 +79,10 @@ export default {
             console.log(response);
             alert("シェアしました");
             this.share = "";
-            //this.$router.go({
-              //path: '/',
-              //force: true,
-            //})
+            this.$router.go({
+              path: '/',
+              force: true,
+            })
           })
           .catch(error => {
           console.log(error);
@@ -101,10 +101,10 @@ export default {
             console.log(response);
             alert("シェアしました");
             this.share = "";
-            //this.$router.go({
-              //path: '/',
-              //force: true,
-            //})
+            this.$router.go({
+              path: '/',
+              force: true,
+            })
           })
           .catch(error => {
           console.log(error);

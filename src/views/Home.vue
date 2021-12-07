@@ -62,4 +62,5 @@ export default {
   font-size: 20px;
   font-weight: bold;
 }
+
 </style>
