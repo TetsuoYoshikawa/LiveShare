@@ -36,7 +36,7 @@ const routes = [
     props: true
   },
   {
-    path: '/favorite/:id',
+    path: '/favorite',
     name: 'Favorite',
     component:Favorite,
     props: true
@@ -48,7 +48,7 @@ const routes = [
     props: true
   },
   {
-    path: '/profile/:id',
+    path: '/profile',
     name: 'Profile',
     component:Profile,
     props: true
@@ -60,7 +60,7 @@ const routes = [
     props: true
   },
   {
-    path:'/want/:id',
+    path:'/want',
     name:'Want',
     component:want,
     props:true

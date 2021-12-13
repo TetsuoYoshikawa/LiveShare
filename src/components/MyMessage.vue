@@ -138,7 +138,7 @@ export default {
     },
     async getShares() {
       await axios
-        .get("https://nameless-everglades-38438.herokuapp.com/api/share/user/" + this.$route.params.id)
+        .get("https://nameless-everglades-38438.herokuapp.com/api/share/user/" + this.id)
         .then((response) => {
           this.shareData = response.data;
         });

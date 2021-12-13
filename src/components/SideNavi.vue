@@ -7,20 +7,17 @@
         <p>ホーム</p>
       </div>
       <div class="flex icon-field" @click="$router.push({
-          path:'/profile/'+ id,
-          params:{id:id}})">
+          path:'/profile'})">
         <img class="icon" src="../assets/profile.png" />
         <p>プロフィール</p>
       </div>
       <div class="flex icon-field" @click="$router.push({
-          path:'/favorite/'+ id,
-          params:{id:id}})">
+          path:'/favorite'})">
         <img class="icon" src="../assets/heart.png" />
         <p>いいね</p>
       </div>
       <div class="flex icon-field" @click="$router.push({
-          path:'/want/'+ id,
-          params:{id:id}})">
+          path:'/want'})">
         <img class="icon" src="../assets/feather.png" />
         <p>行きたい</p>
       </div>
@@ -33,7 +30,6 @@
 </template>
 
 <script>
-import router from 'vue-router';
 export default {
   data() {
     return {

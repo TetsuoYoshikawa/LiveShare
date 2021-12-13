@@ -83,7 +83,10 @@ export default {
         .post("https://nameless-everglades-38438.herokuapp.com/api/profile", formData)
         .then(response => {
           console.log(response);
-          this.$router.replace("/");
+          this.$router.go({
+              path: this.$router.currentRoute.path,
+              force: true,
+            });
         });
     },
     async edit(){
@@ -94,7 +97,10 @@ export default {
         })
         .then((response) => {
           console.log(response);
-          this.$router.replace("/");
+          this.$router.go({
+              path: this.$router.currentRoute.path,
+              force: true,
+            });
         });
     },
     
