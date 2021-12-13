@@ -41,10 +41,7 @@ export default {
         .then((response) => {
           console.log(response);
           this.content = "";
-          this.$router.go({
-            path: this.$router.currentRoute.path,
-            force: true,
-          });
+          this.$router.replace("/");
         });
     },
   },

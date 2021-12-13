@@ -45,7 +45,7 @@ export default {
   methods: {
     logout() {
       this.$store.dispatch('logout');
-      router.replace("/login");
+      this.$router.replace("/login");
     },
   },
 };
@@ -81,5 +81,22 @@ export default {
 }
 .icon {
   width: 25px;
+}
+@media screen and (max-width: 1000px) {
+  .icon-field {
+    text-align: center;
+  }
+  .flex {
+    display: block;
+  }
+  .logo {
+    display: none;
+  }
+  .icon-field p {
+    display: none;
+  }
+  .icon {
+    width: 50px;
+  }
 }
 </style>

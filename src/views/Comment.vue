@@ -52,7 +52,7 @@
               <div class="flex user">
                 <img v-if="comment.user.image_url === null" src="../assets/profile.png" class="icon-profile">
                 <img v-else :src="'https://tetsuoyoshikawa.s3.ap-northeast-3.amazonaws.com/' + comment.user.image_url" class="icon-profile">
-                <h3 class="name">{{comment.user.name}}</h3>
+                <h3 class="profile-name">{{comment.user.name}}</h3>
               </div>
               <div>
                 <p class="text">{{comment.content}}</p>

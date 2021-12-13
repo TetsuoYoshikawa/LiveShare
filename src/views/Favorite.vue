@@ -82,7 +82,6 @@ export default {
           });
         });
     }
-
   },
   created() {
     this.getShare();
@@ -122,7 +121,6 @@ export default {
   font-size: 20px;
   font-weight: bold;
 }
-
 .message {
   padding: 20px;
   border-bottom: solid 1px white;
@@ -176,7 +174,6 @@ export default {
 .detail {
   margin-left: 20px;
 }
-
 .button {
   width: 120px;
   height: 40px;

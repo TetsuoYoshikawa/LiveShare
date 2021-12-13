@@ -23,11 +23,6 @@
             </div>
             <button @click="uploadImage()" class="btn btn-primary">画像変更</button>
           </div>
-          <div class="flex">
-            <p class="profile-name">{{ user.name }}</p>
-            <p class="following follow">フォロー:{{user.name}}</p>
-            <p class="follower follow">フォロワー:{{user.name}}</p>
-          </div>
           <p class="text" v-if="user.content == null">まだプロフィールがありません</p>
           <p class="text">{{ user.content }}</p>
           <div class="form">
@@ -64,7 +59,7 @@ export default {
   methods:{
     async getUser(){
       await axios
-        .get('http://nameless-everglades-38438.herokuapp.com/api/profile/' + this.id)
+        .get('https://nameless-everglades-38438.herokuapp.com/api/profile/' + this.id)
         .then((response) => {
           this.userData = response.data.data;
         })
@@ -88,11 +83,8 @@ export default {
         .post("https://nameless-everglades-38438.herokuapp.com/api/profile", formData)
         .then(response => {
           console.log(response);
-          this.$router.go({
-            path: this.$router.currentRoute.path,
-            force: true,
-            })
-          });
+          this.$router.replace("/");
+        });
     },
     async edit(){
       await axios
@@ -102,10 +94,7 @@ export default {
         })
         .then((response) => {
           console.log(response);
-          this.$router.go({
-              path: this.$router.currentRoute.path,
-              force: true,
-            })
+          this.$router.replace("/");
         });
     },
     

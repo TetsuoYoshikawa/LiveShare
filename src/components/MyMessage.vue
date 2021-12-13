@@ -1,5 +1,5 @@
 <template>
-   <div>
+  <div>
     <div>
       <div class="message" v-for="shareData in shareData" :key="shareData.id">
         <div class="flex">

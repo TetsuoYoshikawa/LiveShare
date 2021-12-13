@@ -14,12 +14,6 @@
               <img v-if="profile.image_url === null" src="../assets/profile.png" class="icon-profile">
               <img v-else :src="'https://tetsuoyoshikawa.s3.ap-northeast-3.amazonaws.com/' + profile.image_url" class="icon-profile">
             <h3 class="profile-name">{{ profile.name }}</h3>
-            <div class="follow" @click="pushFollow(profile)" >
-              <button>フォローする</button>
-            </div>
-            <div class="unfollow" @click="deleteFollow(profile)" >
-              <button>フォローを外す</button>
-            </div>
           </div>
           <p class="text">{{ profile.content }}</p>
         </div>
@@ -56,30 +50,6 @@ export default {
         .get('https://nameless-everglades-38438.herokuapp.com/api/share/user/' + this.user_id)
         .then((response) => {
           this.shareData = response.data.data;
-        })
-    },
-    async pushFollow(profile){
-      await axios 
-        .post('https://nameless-everglades-38438.herokuapp.com/api/follow',{
-          follower_id:this.id,
-          following_id:profile.id,
-        })
-        .then((response) => {
-          console.log(response);
-          alert("フォローしました");
-        })
-    },
-    async deleteFollow(profile){
-      await axios 
-        .delete('https://nameless-everglades-38438.herokuapp.com/api/follow',{
-          data:{
-            follower_id:this.id,
-            following_id:profile.id,
-          }
-        })
-        .then((response) => {
-          console.log(response);
-          alert("フォローを解除しました");
         })
     },
     mounted() {
