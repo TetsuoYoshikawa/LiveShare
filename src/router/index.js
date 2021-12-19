@@ -42,7 +42,7 @@ const routes = [
     props: true
   },
   {
-    path: '/comment/:id',
+    path: '/comment',
     name: 'Comment',
     component: Comment,
     props: true
