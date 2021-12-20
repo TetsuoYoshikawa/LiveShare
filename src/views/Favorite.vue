@@ -126,6 +126,7 @@ export default {
   border-bottom: solid 1px white;
   border-left: solid 1px white;
   border-right: solid 1px white;
+  border-right: solid 1px white;
 }
 .flex {
   display: flex;
