@@ -82,11 +82,9 @@ export default {
       axios
         .post("https://nameless-everglades-38438.herokuapp.com/api/profile", formData)
         .then(response => {
+          this.$store.commit("image_url", this.image_url);
           console.log(response);
-          this.$router.go({
-              path: this.$router.currentRoute.path,
-              force: true,
-            });
+          this.$router.replace("/");
         });
     },
     async edit(){
@@ -96,11 +94,9 @@ export default {
           id:this.id,
         })
         .then((response) => {
+          this.$store.commit("content", this.content);
           console.log(response);
-          this.$router.go({
-              path: this.$router.currentRoute.path,
-              force: true,
-            });
+          this.$router.replace("/");
         });
     },
     

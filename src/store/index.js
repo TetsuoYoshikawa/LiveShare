@@ -12,6 +12,8 @@ export default new Vuex.Store({
     auth: "",
     user_id: "",
     user_name:"",
+    content:"",
+    image_url:"",
     email:"",
     token:"",
     administrator: false,
@@ -28,6 +30,12 @@ export default new Vuex.Store({
     },
     email(state,payload){
       state.email = payload;
+    },
+    content(state,payload){
+      state.content = payload;
+    },
+    image_url(state,payload){
+      state.image_url = payload;
     },
     token(state,payload){
       state.token = payload;
@@ -53,6 +61,8 @@ export default new Vuex.Store({
       commit("auth", responseLogin.data.auth);
       commit("user_id", responseLogin.data.user.id);
       commit("user_name", responseLogin.data.user.name);
+      commit("content",responseLogin.data.user.content);
+      commit('image_url',responseLogin.data.user.image_url);
       commit("email", responseLogin.data.user.email);
       commit("administrator", responseLogin.data.user.administrator);
       router.replace("/");
