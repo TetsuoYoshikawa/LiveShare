@@ -139,11 +139,14 @@ export default {
   width: 25px;
   height: 25px;
   margin-right: 20px;
+  cursor: pointer;
 }
 .icon-2 {
   width: 25px;
   height: 25px;
-}.icon-profile {
+  cursor: pointer;
+}
+.icon-profile {
   width: 50px;
   height: 50px;
   margin-right: 20px;

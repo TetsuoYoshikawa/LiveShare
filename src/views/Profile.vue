@@ -164,6 +164,11 @@ export default {
   font-size: 24px;
   padding: 10px 20px;
 }
+.preview-item-file{
+  height:300px;
+  width:300px;
+  padding-left: 50px;
+}
 .follow {
   padding-top: 15px;
   margin-right: 0%;

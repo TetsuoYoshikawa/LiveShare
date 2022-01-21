@@ -22,7 +22,7 @@
             </div>
             <p class="devise-link">
               アカウントをお持ちですか？  
-              <a @click="$route.push('/register')">サインインする</a>
+              <a @click="$router.push('/register')">サインアップする</a>
             </p>
           </div>
         </div>
@@ -109,6 +109,11 @@ button{
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+}
+a{
+  color: #4b90ff;
+  border-bottom: 1px solid #007bff;
+  cursor: pointer;
 }
 @media screen and (max-width: 768px) {
   .main {

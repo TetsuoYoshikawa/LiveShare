@@ -112,6 +112,7 @@ button{
   color: #fff;
   background-color: #007bff;
   border-color: #007bff;
+  cursor: pointer;
 }
 .devise-link {
   text-align: center;
@@ -122,6 +123,11 @@ button{
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+}
+a{
+  color: #4b90ff;
+  border-bottom: 1px solid #007bff;
+  cursor: pointer;
 }
 @media screen and (max-width: 768px) {
   .main {
