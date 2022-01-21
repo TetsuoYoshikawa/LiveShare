@@ -84,11 +84,7 @@ export default {
         .then(response => {
           this.$store.commit("image_url", this.image_url);
           console.log(response);
-          this.$router.go({
-              path: this.$router.currentRoute.path,
-              props:true,
-              force: true,
-            });
+          this.$router.replace("/");
         });
     },
     async edit(){
@@ -100,11 +96,7 @@ export default {
         .then((response) => {
           this.$store.commit("content", this.content);
           console.log(response);
-          this.$router.go({
-              path: this.$router.currentRoute.path,
-              props:true,
-              force: true,
-            });
+          this.$router.replace("/");
         });
     },
     
