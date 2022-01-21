@@ -10,6 +10,7 @@ import Favorite from '../views/Favorite.vue';
 import userProfile from '../views/UserProfile.vue';
 import want from '../views/Want.vue';
 import Userwant from '../views/UserWant.vue';
+import store from "../store/index";
 
 Vue.use(VueRouter);
 
@@ -33,25 +34,37 @@ const routes = [
     path: '/share',
     name: 'Share',
     component:Share,
-    props: true
+    props: true,
+    meta:{
+      userAuth:true,
+    }
   },
   {
     path: '/favorite',
     name: 'Favorite',
     component:Favorite,
-    props: true
+    props: true,
+    meta:{
+      userAuth:true,
+    }
   },
   {
     path: '/comment',
     name: 'Comment',
     component: Comment,
-    props: true
+    props: true,
+    meta:{
+      userAuth:true,
+    }
   },
   {
     path: '/profile',
     name: 'Profile',
     component:Profile,
-    props: true
+    props: true,
+    meta:{
+      userAuth:true,
+    }
   },
   {
     path: '/userProfile/:id',
@@ -63,7 +76,10 @@ const routes = [
     path:'/want',
     name:'Want',
     component:want,
-    props:true
+    props:true,
+    meta:{
+      userAuth:true,
+    }
   },
   {
     path:'/userWant/:id',
@@ -81,9 +97,8 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
   if (
-    (to.matched.some((record) => record.meta.requiresAuth)
-    // このルートはログインされているかどうか認証が必要です。
-    && !this.$store.state.auth)
+    to.matched.some((record) => record.meta.userAuth) &&
+    !store.state.auth
   ) {
     next({
       path: "/login",
