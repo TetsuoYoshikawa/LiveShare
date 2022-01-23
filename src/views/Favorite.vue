@@ -24,7 +24,6 @@
               <p>{{shareData.share.artist}}</p>
               <p>{{shareData.share.area}}</p>
               <p>{{shareData.share.date}}</p>
-              <p>{{shareData.user_id}}</p>
             </div>
             <p class="text">{{ shareData.share.share}}</p>
             <div class="flex-2">
