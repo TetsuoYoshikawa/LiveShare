@@ -101,7 +101,7 @@ export default {
     },
     async comment() {
       await axios
-        .get("https://nameless-everglades-38438.herokuapp.com/api/comment/" + this.$route.params.id)
+        .get("https://nameless-everglades-38438.herokuapp.com/api/comment/" + this.$router.params.id)
         .then((response) => {
           this.comments = response.data.data;
         });

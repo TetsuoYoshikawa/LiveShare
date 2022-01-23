@@ -30,7 +30,8 @@
           <img class="icon" src="../assets/cross.png" @click="deleteShare(shareData)" alt  v-if="shareData.share.user_id === $store.state.user_id"/>
           <img class="icon detail" src="../assets/detail.png" alt 
           @click="$router.push({
-            path:'/comment'})"
+            path:'/comment/' + shareData.share.id,
+            params:{id:shareData.share.id}})"
              />
         </div>
         <div class="right" >
