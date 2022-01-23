@@ -34,7 +34,7 @@
             <p class="text">{{shareData.wants.length}}</p>
           </div>
           <div class="right" >
-            <div class="want" v-if="shareData.tag_id === 3">
+            <div class="want" v-if="shareData.tag_id === 3 && shareData.user_id !== id">
               <p class="button-2" @click="deleteWant(shareData)" v-if="isWant(shareData.wants)">
                 <img class="icon-2" src="../assets/feather.png" />行きたい済
               </p>
@@ -137,11 +137,19 @@ export default {
         })
     },
     async getShares() {
-      await axios
-        .get("https://nameless-everglades-38438.herokuapp.com/api/share/user/" + this.id)
-        .then((response) => {
+      if(this.$route.params.id){
+        await axios
+          .get("https://nameless-everglades-38438.herokuapp.com/api/share/user/" + this.$route.params.id)
+          .then((response) => {
           this.shareData = response.data;
-        });
+          });
+      }else{
+        await axios
+          .get("https://nameless-everglades-38438.herokuapp.com/api/share/user/" + this.id)
+          .then((response) => {
+          this.shareData = response.data;
+          });
+      }
     },
   },
   created(){

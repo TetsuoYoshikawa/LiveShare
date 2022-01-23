@@ -4,11 +4,18 @@
       <div class="flex">
         <img v-if="shareData.image_url === null" src="../assets/profile.png" class="icon-profile">
         <img v-else :src="'https://tetsuoyoshikawa.s3.ap-northeast-3.amazonaws.com/' + shareData.image_url" class="icon-profile">
-        <h3 class="profile-name" @click="$router.push({
-          path:'/userProfile/'+ shareData.share.user_id,
-          params:{id:shareData.share.user_id}})">
-          {{shareData.name}}
-        </h3>
+        <div>
+          <h3 v-if="shareData.share.user_id === id" class="profile-name" @click="$router.push({
+            path:'/profile',
+            })">
+            {{shareData.name}}
+          </h3>
+          <h3 v-else class="profile-name" @click="$router.push({
+            path:'/userProfile/'+ shareData.share.user_id,
+            params:{id:shareData.share.user_id}})">
+            {{shareData.name}}
+          </h3>
+        </div>
       </div>
       <div class="flex share">
         <p>{{shareData.share.artist}}</p>
@@ -27,7 +34,7 @@
              />
         </div>
         <div class="right" >
-          <div class="want" v-if="shareData.share.tag_id === 3">
+          <div class="want" v-if="shareData.share.tag_id === 3 && shareData.share.user_id !== id">
             <p class="button-2" @click="deleteWant(index)" v-if="isWant(shareData.want)">
               <img class="icon-2" src="../assets/feather.png" />行きたい済
             </p>
