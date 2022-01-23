@@ -93,15 +93,12 @@ export default {
         })
         .then((response) => {
           console.log(response);
-          this.$router.go({
-            path: this.$router.currentRoute.path,
-            force: true,
-          });
+          this.$router.replace("/");
         });
     },
     async comment() {
       await axios
-        .get("https://nameless-everglades-38438.herokuapp.com/api/comment/" + this.$router.params.id)
+        .get("https://nameless-everglades-38438.herokuapp.com/api/comment/" + this.$route.params.id)
         .then((response) => {
           this.comments = response.data.data;
         });
