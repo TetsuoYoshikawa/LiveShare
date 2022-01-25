@@ -53,9 +53,6 @@ const routes = [
     name: 'Comment',
     component: Comment,
     props: true,
-    meta:{
-      userAuth:true,
-    }
   },
   {
     path: '/profile',

@@ -85,16 +85,21 @@ export default {
   },
   methods: {
     async send() {
-      await axios
-        .post("https://nameless-everglades-38438.herokuapp.com/api/comment", {
-          share_id: this.$route.params.id,
-          user_id: this.id,
-          content: this.content,
-        })
-        .then((response) => {
-          console.log(response);
-          this.$router.replace("/");
-        });
+      if(this.$store.state.auth == true){
+        await axios
+          .post("https://nameless-everglades-38438.herokuapp.com/api/comment", {
+            share_id: this.$route.params.id,
+            user_id: this.id,
+            content: this.content,
+          })
+          .then((response) => {
+            console.log(response);
+            this.$router.replace("/");
+          });
+      }else{
+        alert('ログインしてください');
+        this.$router.replace('/login');
+      }
     },
     async comment() {
       await axios

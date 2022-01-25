@@ -27,11 +27,13 @@
             alt @click="$router.push({
             path:'/comment/'+ shareData.id,
             params:{id:shareData.id}})" />
-            <img class="icon" src="../assets/feather.png" 
-            @click="$router.push({
-            path:'/userWant/'+ shareData.id,
-            params:{id:shareData.id}})"/>
-            <p class="text">{{shareData.wants.length}}</p>
+            <div class="flex" v-if="shareData.tag_id === 3">
+              <img class="icon" src="../assets/feather.png" 
+              @click="$router.push({
+              path:'/userWant/'+ shareData.id,
+              params:{id:shareData.id}})"/>
+              <p class="text">{{shareData.wants.length}}</p>
+            </div>
           </div>
           <div class="right" >
             <div class="want" v-if="shareData.tag_id === 3 && shareData.user_id !== id">
@@ -62,8 +64,9 @@ export default {
   },
   methods: {
     favorite(shareData) {
-      if (shareData.user_id === this.$store.state.user_id) {
-        axios
+      if(this.$store.state.auth == true){
+        if (shareData.user_id === this.$store.state.user_id) {
+         axios
           .post('https://nameless-everglades-38438.herokuapp.com/api/favorite',{
             share_id:this.shareData.id,
             user_id:this.$store.state.user_id
@@ -75,21 +78,33 @@ export default {
               force: true,
             });
           })
-      } else {
-        axios
-          .delete("https://nameless-everglades-38438.herokuapp.com/api/favorite", {
-            data:{
-              share_id:this.shareData.id,
-              user_id:this.$store.state.user_id,
-            }
-          })
-          .then((response) => {
+          .catch((response) =>{
             console.log(response);
-            this.$router.go({
-              path: this.$router.currentRoute.path,
-              force: true,
+            alert('ログインしてください');
+          })
+        } else {
+          axios
+            .delete("https://nameless-everglades-38438.herokuapp.com/api/favorite", {
+              data:{
+                share_id:this.shareData.id,
+                user_id:this.$store.state.user_id,
+              }
+            })
+            .then((response) => {
+              console.log(response);
+              this.$router.go({
+                path: this.$router.currentRoute.path,
+                force: true,
+              });
+            })
+            .catch((response) =>{
+              console.log(response);
+              alert('ログインしてください');
             });
-          });
+        }
+      } else{
+        alert('ログインしてください');
+        this.$router.replace('/login');
       }
     },
     deleteShare(shareData) {
@@ -120,21 +135,26 @@ export default {
           })
     },
     want(shareData){
-      axios
-        .post('https://nameless-everglades-38438.herokuapp.com/api/want',{
-          user_id:this.$store.state.user_id,
-          share_id:shareData.id,
-        })
-        .then((response) => {
-          console.log(response);
-          this.$router.go({
+      if(this.$store.state.auth == true){
+        axios
+          .post('https://nameless-everglades-38438.herokuapp.com/api/want',{
+            user_id:this.$store.state.user_id,
+            share_id:shareData.id,
+          })
+          .then((response) => {
+            console.log(response);
+            this.$router.go({
               path: this.$router.currentRoute.path,
               force: true,
+            })
           })
-        })
-        .catch((error) => {
-          console.log(error)
-        })
+          .catch((error) => {
+            console.log(error)
+          })
+      }else{
+        alert('ログインしてください');
+        this.$router.replace('/login');
+      }
     },
     async getShares() {
       if(this.$route.params.id){
