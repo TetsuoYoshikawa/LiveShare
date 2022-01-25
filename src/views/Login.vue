@@ -19,6 +19,9 @@
               <div class="actions">
                 <button @click="login" class="btn">ログインする</button>
               </div>
+              <div class="actions">
+                <button class="btn2" @click="guestlogin">ゲストログイン</button>
+              </div>
             </div>
             <p class="devise-link">
               アカウントをお持ちですか？  
@@ -48,6 +51,12 @@ export default {
       this.$store.dispatch("login",{
         email:this.email,
         password:this.password
+      });
+    },
+    guestlogin(){
+      this.$store.dispatch("login",{
+        email:"test@test.com",
+        password:"testtest"
       });
     }
   }
@@ -94,11 +103,17 @@ input {
   padding:10px 150px 10px 5px;
 }
 button{
-  padding:10px 125px ;
+  padding:10px 110px ;
+  margin-bottom:10px;
   font-size: 16px;
   color: #fff;
   background-color: #007bff;
   border-color: #007bff;
+}
+.btn2{
+  padding:5px 10px ;
+  background-color: #00c3ff;
+  border-color: #00c3ff;
 }
 .devise-link {
   text-align: center;
